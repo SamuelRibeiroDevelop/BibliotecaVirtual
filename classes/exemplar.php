@@ -19,6 +19,7 @@ class exemplar
     private $tipo;
     private $qtd_disponivel;
     private $livro_idLivro;
+    private $download;
 
     /**
      * exemplar constructor.
@@ -32,8 +33,9 @@ class exemplar
      * @param $tipo
      * @param $qtd_disponivel
      * @param $livro_idLivro
+     * @param $download
      */
-    public function __construct($id, $fornecedor, $doador, $situacao, $localizacao, $data_cadastro, $preco, $tipo, $qtd_disponivel, $livro_idLivro)
+    public function __construct($id, $fornecedor, $doador, $situacao, $localizacao, $data_cadastro, $preco, $tipo, $qtd_disponivel, $livro_idLivro, $download)
     {
         $this->id = $id;
         $this->fornecedor = $fornecedor;
@@ -45,6 +47,7 @@ class exemplar
         $this->tipo = $tipo;
         $this->qtd_disponivel = $qtd_disponivel;
         $this->livro_idLivro = $livro_idLivro;
+        $this->download = $download;
     }
 
     /**
@@ -206,5 +209,22 @@ class exemplar
     {
         $this->livro_idLivro = $livro_idLivro;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDownload()
+    {
+        return $this->download;
+    }
+
+    /**
+     * @param mixed $download
+     */
+    public function setDownload($download): void
+    {
+        $this->download = $download;
+    }
+
 
 }

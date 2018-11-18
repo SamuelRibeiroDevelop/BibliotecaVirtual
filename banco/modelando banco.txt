@@ -1,0 +1,53 @@
+USUARIO
+id INT
+nome VARCHAR(100)
+cpf VARCHAR(15)
+telefone VARCHAR(13)
+email VARCHAR(100)
+endereco VARCHAR(100)
+cidade VARCHAR(45)
+UF VARCHAR(2)
+login VARCHAR(10)
+senha VARCHAR(10)
+tipo_usuario VARCHAR(45) (usuario comum, atendente, bibliotecario e gerente)
+
+
+LIVRO
+id INT
+titulo VARCHAR(100)
+autor VARCHAR(100)
+tradutor VARCHAR(100)
+ISBN INT
+editora VARCHAR(100)
+ano INT
+local VARCHAR(100) (cidade, estado, pais onde foi publicado)
+num_pagina INT
+descricao VARCHAR(200)
+id_categoria INT
+
+
+CATEGORIA
+id INT
+nome VARCHAR(100)
+esta_ativa VARCHAR(3)
+descricao VACHAR(200)
+
+
+EXEMPLAR
+id INT
+fornecedor VARCHAR(100) (se houver fornecedor, não haverá doador)
+doador VARCHAR(100) (se houver doador, não haverá fornecedor)
+situacao VARCHAR(30) (conservado, novo, estragado, velho)
+localizacao VARCHAR(20) (disponivel, emprestado)
+data_cadastro DATETIME
+preco DOUBLE
+qtd_disponivel INT
+tipo VARCHAR(45) (físico, digital ou somente para consulta)
+id_exemplar INT
+
+emprestimo
+id INT
+data_inicio DATETIME
+data_devolucao DATETIME
+id_exemplar INT
+id_usuario INT

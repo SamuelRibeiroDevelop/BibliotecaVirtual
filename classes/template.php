@@ -3,6 +3,14 @@
 class template
 {
     function head(){
+        session_start();
+        if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['password']) == true))
+        {
+            unset($_SESSION['login']);
+            unset($_SESSION['password']);
+            header('location:login.php');
+        }
+        $logado = $_SESSION['name'];
 
         echo "<!DOCTYPE html>
 <html lang=\"en\">
@@ -38,7 +46,6 @@ class template
 
 </head>
 <body>";
-
     }
 
     function footer(){
@@ -88,7 +95,9 @@ class template
                         <i class=\"fa fa-user fa-fw\"></i> <i class=\"fa fa-caret-down\"></i>
                     </a>
                     <ul class=\"dropdown-menu dropdown-user\">
-                        <li><a href=\"#\"><i class=\"fa fa-sign-out fa-fw\"></i> Logout</a>
+                        <li><a href=\"logout.php\"><i class=\"fa fa-sign-out fa-fw\"></i> Logout</a>
+                        </li>
+                        <li><a href=\"login.php\"><i class=\"fa fa-sign-in fa-fw\"></i> Login</a>
                         </li>
                     </ul>
                 </li>
@@ -96,7 +105,8 @@ class template
 
     }
 
-    function sidebar(){
+    function sidebar()
+    {
 
         echo "<div class=\"navbar-default sidebar\" role=\"navigation\">
                 <div class=\"sidebar-nav navbar-collapse\">
@@ -107,9 +117,8 @@ class template
                             </div>
                         </li>
                         <li>
-                            <a href=\"#\"><i class=\"fa fa-home fa-fw\"></i> Página Inicial</a>
+                            <a href=\"index.php\"><i class=\"fa fa-home fa-fw\"></i> Página Inicial</a>
                         </li>
-                        <!-- INÍCIO SEÇÃO LIVROS-->
                         <li>
                             <a href=\"#\"><i class=\"fa fa-book fa-fw\"></i> Livros<span class=\"fa arrow\"></span></a>
                             <ul class=\"nav nav-second-level\">
@@ -124,40 +133,37 @@ class template
                             <ul class=\"nav nav-second-level\">
                                 <li>
                                     <a href=\"#\"><i class=\"fa fa-search fa-fw\"></i> Consultar</a>
-                                </li>
-                                <li>
-                                    <a href=\"#\"><i class=\"fa fa-plus-circle fa-fw\"></i> Cadastrar</a>
+                                </li>";
+                                if($_SESSION['tipo'] == 0){
+                                echo"<li>
+                                    <a href=\"#\"><i class=\"fa fa-plus-circle fa-fw\"></i> Gerenciar Exemplares</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
+                        </li>";
+                        }
+                        if($_SESSION['tipo'] == 0){
+                            echo"<li>
                             <a href=\"#\"><i class=\"fa fa-book fa-fw\"></i> Categorias<span class=\"fa arrow\"></span></a>
                             <ul class=\"nav nav-second-level\">
                                 <li>
-                                    <a href=\"#\"><i class=\"fa fa-search fa-fw\"></i> Consultar</a>
-                                </li>
-                                <li>
-                                    <a href=\"#\"><i class=\"fa fa-plus-circle fa-fw\"></i> Cadastrar</a>
+                                    <a href=\"categoria.php\"><i class=\"fa fa-cogs fa-fw\"></i> Gerenciar Categorias</a>
                                 </li>
                             </ul>
                         </li>
                             </ul>
-                        </li>
-                        <!-- FIM SEÇÃO LIVROS -->
-                        <!-- INÍCIO SEÇÃO USUÁRIOS -->
-                        <li>
-                            <a href=\"#\"><i class=\"fa fa-user fa-fw\"></i> Usuários<span class=\"fa arrow\"></span></a>
+                        </li>";
+                        }
+                        if($_SESSION['tipo'] == 0){
+                        echo" < li>
+                            <a href = \"#\"><i class=\"fa fa-user fa-fw\"></i> Usuários<span class=\"fa arrow\"></span></a>
                             <ul class=\"nav nav-second-level\">
                                 <li>
-                                    <a href=\"#\"><i class=\"fa fa-search fa-fw\"></i> Consultar</a>
-                                </li>
-                                <li>
-                                    <a href=\"#\"><i class=\"fa fa-plus-circle fa-fw\"></i> Cadastrar</a>
+                                    <a href=\"usuario.php\"><i class=\"fa fa-cogs fa-fw\"></i> Gerenciar Usuários</a>
                                 </li>
                             </ul>
-                        </li>
-                        <!-- FIM SEÇÃO USUÁRIOS -->
-                    </ul>
+                        </li>";
+                        }
+               echo"</ul>
                 </div>
             </div>
         </nav>";
@@ -165,13 +171,9 @@ class template
 
     function bodypage(){
 
-        echo "<div id=\"page-wrapper\">
-            <div class=\"row\">
-                <div class=\"col-lg-12\">
-                    <h1 class=\"page-header\"><i class=\"fa fa-home fa-fw\"></i> Página Inicial</h1>
-                </div>
-            </div>
-            
-        </div>";
+        date_default_timezone_set('America/Sao_Paulo');
+        $data = date("F j, Y");
+
+        echo "<h6 style='text-align: center'>$data</h6>";
     }
 }

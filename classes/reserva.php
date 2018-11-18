@@ -2,32 +2,31 @@
 /**
  * Created by PhpStorm.
  * User: aluno
- * Date: 22/10/2018
- * Time: 22:55
+ * Date: 05/11/2018
+ * Time: 19:25
  */
 
 class reserva
 {
-
     private $id;
-    private $dataEmprestimo;
-    private $dataDevolucao;
+    private $dt_inicio;
+    private $dt_termino;
     private $exemplar_idExemplar;
     private $usuario_idUsuario;
 
     /**
      * reserva constructor.
      * @param $id
-     * @param $dataEmprestimo
-     * @param $dataDevolucao
+     * @param $dt_inicio
+     * @param $dt_termino
      * @param $exemplar_idExemplar
      * @param $usuario_idUsuario
      */
-    public function __construct($id, $dataEmprestimo, $dataDevolucao, $exemplar_idExemplar, $usuario_idUsuario)
+    public function __construct($id, $dt_inicio, $dt_termino, $exemplar_idExemplar, $usuario_idUsuario)
     {
         $this->id = $id;
-        $this->dataEmprestimo = $dataEmprestimo;
-        $this->dataDevolucao = $dataDevolucao;
+        $this->dt_inicio = $dt_inicio;
+        $this->dt_termino = $dt_termino;
         $this->exemplar_idExemplar = $exemplar_idExemplar;
         $this->usuario_idUsuario = $usuario_idUsuario;
     }
@@ -51,33 +50,33 @@ class reserva
     /**
      * @return mixed
      */
-    public function getDataEmprestimo()
+    public function getDtInicio()
     {
-        return $this->dataEmprestimo;
+        return $this->dt_inicio;
     }
 
     /**
-     * @param mixed $dataEmprestimo
+     * @param mixed $dt_inicio
      */
-    public function setDataEmprestimo($dataEmprestimo): void
+    public function setDtInicio($dt_inicio): void
     {
-        $this->dataEmprestimo = $dataEmprestimo;
+        $this->dt_inicio = $dt_inicio;
     }
 
     /**
      * @return mixed
      */
-    public function getDataDevolucao()
+    public function getDtTermino()
     {
-        return $this->dataDevolucao;
+        return $this->dt_termino;
     }
 
     /**
-     * @param mixed $dataDevolucao
+     * @param mixed $dt_termino
      */
-    public function setDataDevolucao($dataDevolucao): void
+    public function setDtTermino($dt_termino): void
     {
-        $this->dataDevolucao = $dataDevolucao;
+        $this->dt_termino = $dt_termino;
     }
 
     /**
